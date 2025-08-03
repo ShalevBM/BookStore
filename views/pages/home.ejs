@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h1>📚 <%= title %></h1>
+
+<% if (error) { %>
+  <p style="color: red;"><%= error %></p>
+<% } else { %>
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <strong><%= book.title %></strong> - <%= book.author %> - ₪<%= book.price %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<%- include('../partials/footer') %>

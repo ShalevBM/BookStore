@@ -1,0 +1,45 @@
+<div class="form-header">
+    <h2>✏️ עריכת ספר</h2>
+</div>
+
+<form action="/books/<%= book._id %>?_method=PUT" method="POST" class="book-form">
+    <div class="form-group">
+        <label for="title">📖 כותרת:</label>
+        <input type="text" id="title" name="title" value="<%= book.title %>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="author">✍️ מחבר:</label>
+        <input type="text" id="author" name="author" value="<%= book.author %>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="price">💰 מחיר:</label>
+        <input type="number" id="price" name="price" step="0.01" min="0" value="<%= book.price %>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="category">📂 קטגוריה:</label>
+        <select name="category" id="category">
+            <option value="">בחר קטגוריה</option>
+            <option value="ספרות כללית" <%= book.category === 'ספרות כללית' ? 'selected' : '' %>>ספרות כללית</option>
+            <option value="מדע בדיוני" <%= book.category === 'מדע בדיוני' ? 'selected' : '' %>>מדע בדיוני</option>
+            <option value="פנטזיה" <%= book.category === 'פנטזיה' ? 'selected' : '' %>>פנטזיה</option>
+            <option value="מתח" <%= book.category === 'מתח' ? 'selected' : '' %>>מתח</option>
+            <option value="רומן" <%= book.category === 'רומן' ? 'selected' : '' %>>רומן</option>
+            <option value="היסטוריה" <%= book.category === 'היסטוריה' ? 'selected' : '' %>>היסטוריה</option>
+            <option value="מדע" <%= book.category === 'מדע' ? 'selected' : '' %>>מדע</option>
+            <option value="ילדים" <%= book.category === 'ילדים' ? 'selected' : '' %>>ילדים</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">📝 תיאור:</label>
+        <textarea name="description" id="description" rows="4" placeholder="תיאור קצר של הספר..."><%= book.description || '' %></textarea>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn edit-btn">💾 שמור שינויים</button>
+        <a href="/" class="btn cancel-btn">❌ ביטול</a>
+    </div>
+</form>
